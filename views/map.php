@@ -2,7 +2,7 @@
 <div id="map" style="height:<?php echo $height; ?>px"></div>
 <script type="text/javascript">
     var lat = <?php echo number_format($lat, 8, '.', ''); ?>;
-    var lng = <?php echo number_format($lng, 8, '.', '');; ?>;
+    var lng = <?php echo number_format($lng, 8, '.', ''); ?>;
     var zoom = <?php echo $zoom; ?>;
     
     <?php foreach ($tiles as $tileName => $tileParams): ?>
@@ -29,8 +29,10 @@
     
     <?php 
     if(count($points) > 0)
-    foreach ($points as $point): ?>
-        addPoint(<?php echo $point['lat']; ?>, <?php echo $point['lng']; ?>, '<?php echo $point['description']; ?>');
+        foreach ($points as $point):
+        $description = (isset($point['description'])) ? $point['description'] : NULL;
+    ?>
+        addPoint(<?php echo number_format($point['lat'], 8, '.', ''); ?>, <?php echo number_format($point['lng'], 8, '.', ''); ?>, '<?php echo $description; ?>');
     <?php endforeach; ?>
     map.addLayer(geoJsonLayer);
 

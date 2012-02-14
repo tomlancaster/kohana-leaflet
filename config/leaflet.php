@@ -1,10 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-if (!defined('CURRENT_YEAR'))
-    define('CURRENT_YEAR', date("Y"));
-
-if (!defined('CLOUDMADE_API_KEY'))
-    define('CLOUDMADE_API_KEY', '');
+$currentYear        = date("Y"); 
+$cloudmadeApiKey    = '';
 
 return array(
     'lat'       => 54.3583693,
@@ -16,15 +13,15 @@ return array(
     'tiles'     => array(
         'OSM'   => array(
             'url'           => 'http://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            'attribution'   => 'OpenStreetMap &copy; '.CURRENT_YEAR,
+            'attribution'   => 'OpenStreetMap &copy; '.$currentYear,
         ),
         'UMP'   => array(
             'url'           => 'http://tiles.ump.waw.pl/ump_tiles/{z}/{x}/{y}.png',
-            'attribution'   => 'UMP &copy; '.CURRENT_YEAR,
+            'attribution'   => 'UMP &copy; '.$currentYear,
         ),
         'CM'    => array(
-            'url'           => 'http://{s}.tile.cloudmade.com/'.CLOUDMADE_API_KEY.'/997/256/{z}/{x}/{y}.png',
-            'attribution'   => 'Map data, Imagery CloudMade, OpenStreetMap contributors &copy; '.CURRENT_YEAR,
+            'url'           => 'http://{s}.tile.cloudmade.com/'.$cloudmadeApiKey.'/997/256/{z}/{x}/{y}.png',
+            'attribution'   => 'Map data, Imagery CloudMade, OpenStreetMap contributors &copy; '.$currentYear,
         ),
     ),
 );
