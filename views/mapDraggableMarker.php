@@ -16,6 +16,9 @@
     var tile<?php echo $tileName; ?>_Attribution    = '<?php echo $tileParams['attribution']; ?>';
     var tile<?php echo $tileName; ?>                = new L.TileLayer(tile<?php echo $tileName; ?>_URL, {maxZoom: <?php echo $maxZoom; ?>, attribution: tile<?php echo $tileName; ?>_Attribution});
     <?php endforeach; ?>
+        
+    var inputLatID = '<?php echo $inputLatName; ?>';
+    var inputLngID = '<?php echo $inputLngName; ?>';
 
     var map = new L.Map('map', {
         center: new L.LatLng(lat, lng),
@@ -26,7 +29,7 @@
 
     var markerLocation = new L.LatLng(lat, lng),
     marker = new L.Marker(markerLocation, {"draggable":"true"});
-    marker.on('dragend', markerPos)
+    marker.on('dragend', markerPos);
     
     map.addLayer(marker);
     
@@ -40,5 +43,5 @@
         overlayMaps
     );
     map.addControl(layersControl);
-    markerPos('<?php echo trim($inputLatName); ?>', '<?php echo trim($inputLngName); ?>');
+    markerPos();
 </script>
