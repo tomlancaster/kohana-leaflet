@@ -12,7 +12,7 @@ function addPoint(lat, lng, description) {
     geoJsonLayer.addGeoJSON(geoJsonPoint);
 }
 
-function markerPos() {
-    $('#lat').val(marker.getLatLng().lat.toFixed(7));
-    $('#lng').val(marker.getLatLng().lng.toFixed(7));
+function markerPos(inputLatID, inputLngID) {
+    $('#'+inputLatID).val(marker.getLatLng().lat.toFixed(7));
+    $('#'+inputLngID).val(marker.getLatLng().lng.toFixed(7));
 }

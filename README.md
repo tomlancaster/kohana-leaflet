@@ -32,7 +32,16 @@ $points = array(
 ``
 * Draggable marker ( finding lat + lng )
 ``
-<?php echo Leaflet::instance()->mapDraggableMarker(54.3583693, 18.6465454); ?>
+
+<?php
+$mapOptions = array(
+    'zoom'              => 15,
+    'showLatLngInput'   => FALSE,
+    'inputLatName'      => 'custom_lat',
+    'inputLngName'      => 'custom_lng',
+    'height'            => 250
+);
+ echo Leaflet::instance()->mapDraggableMarker(54.3583693, 18.6465454, $mapOptions); ?>
 ``
     
 # Author

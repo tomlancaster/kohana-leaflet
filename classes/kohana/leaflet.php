@@ -31,15 +31,48 @@ class Kohana_Leaflet {
         return $view;
     }
     
-    public function mapDraggableMarker($lat, $lng, $zoom = 18) {
+    public function mapDraggableMarker($lat, $lng, $mapOptions = array()) {
+        $defaultMapOptions = array(
+            'zoom'      => 18,
+            'height'    => $this->config->height,
+            'maxZoom'   => $this->config->maxZoom,
+            
+            // CUSTOM
+            'showLatLngInput'   => TRUE,
+            'inputLatName'      => 'lat',
+            'inputLngName'      => 'lng'
+        );
+        
+        $zoom               = (isset($mapOptions['zoom']) && is_integer($mapOptions['zoom']))
+                                ? $mapOptions['zoom']
+                                : $defaultMapOptions['zoom'];
+        $height             = (isset($mapOptions['height']) && is_integer($mapOptions['height']))
+                                ? $mapOptions['height']
+                                : $defaultMapOptions['height'];
+        $maxZoom            = (isset($mapOptions['maxZoom']) && is_integer($mapOptions['maxZoom']))
+                                ? $mapOptions['maxZoom']
+                                : $defaultMapOptions['maxZoom'];
+        $showLatLngInput    = (isset($mapOptions['showLatLngInput']) && is_bool($mapOptions['showLatLngInput']))
+                                ? $mapOptions['showLatLngInput']
+                                : $defaultMapOptions['showLatLngInput'];
+        $inputLatName       = (isset($mapOptions['inputLatName']) && $mapOptions['inputLatName'] != '')
+                                ? $mapOptions['inputLatName']
+                                : $defaultMapOptions['inputLatName'];
+        $inputLngName       = (isset($mapOptions['inputLngName']) && $mapOptions['inputLngName'] != '')
+                                ? $mapOptions['inputLngName']
+                                : $defaultMapOptions['inputLngName'];
+        
         $view = View::factory('mapDraggableMarker')
                 ->bind('lat', $lat)
                 ->bind('lng', $lng)
-                ->bind('zoom', $zoom)
-                ->bind('maxZoom', $this->config->maxZoom)
+                ->bind('maxZoom', $maxZoom)
                 ->bind('tiles', $this->config->tiles)
                 ->bind('defTile', $this->config->defTile)
-                ->bind('height', $this->config->height);
+                ->bind('showLatLngInput', $showLatLngInput)
+                ->bind('inputLatName', $inputLatName)
+                ->bind('inputLngName', $inputLngName)
+                ->bind('zoom', $zoom)
+                ->bind('height', $height);
         return $view;
     }
 }
