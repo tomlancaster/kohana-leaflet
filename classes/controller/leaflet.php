@@ -3,7 +3,6 @@
 class Controller_Leaflet extends Controller {
     private $_jsFiles   = array(
         'media/js/leaflet.js',
-        'media/js/leaflet-functions.js',
     );
     
     public function action_media() {

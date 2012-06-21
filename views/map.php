@@ -1,4 +1,4 @@
-<script src="<?php echo URL::site(Route::get('leaflet_media')->uri(array('file' => 'js/leaflet-package.js')), TRUE); ?>" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo URL::site(Route::get('leaflet_media')->uri(array('file' => 'js/leaflet.js')), TRUE); ?>" type="text/javascript" charset="utf-8"></script>
 <div id="map" style="height:<?php echo $height; ?>px"></div>
 <script type="text/javascript">
     var lat = <?php echo number_format($lat, 8, '.', ''); ?>;

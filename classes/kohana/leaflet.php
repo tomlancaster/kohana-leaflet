@@ -15,9 +15,24 @@ class Kohana_Leaflet {
         return self::$_instance;
     }
 
-    public function map($points = array()) {
+    public function map($points = array(), $options = NULL) {
         $lat = (isset($points['0']['lat'])) ? $points['0']['lat'] : $this->config->lat; 
         $lng = (isset($points['0']['lng'])) ? $points['0']['lng'] : $this->config->lng; 
+        if ($options) 
+        {
+	        	foreach ($options as $k => $v)
+	        	{
+	        		$this->config->$k = $v;
+	        	}
+	        	if (Arr::get($options, 'lat'))
+	        	{
+	        		$lat = $options['lat'];
+	        	}
+	        	if (Arr::get($options,'lng'))
+	        	{
+	        		$lng = $options['lng'];
+	        	}
+        }
         
         $view = View::factory('map')
                 ->bind('points', $points)
