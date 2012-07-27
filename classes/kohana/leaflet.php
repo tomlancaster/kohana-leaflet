@@ -42,7 +42,8 @@ class Kohana_Leaflet {
                 ->bind('maxZoom', $this->config->maxZoom)
                 ->bind('tiles', $this->config->tiles)
                 ->bind('defTile', $this->config->defTile)
-                ->bind('height', $this->config->height);
+                ->bind('height', $this->config->height)
+                ->bind('width', $this->config->width);
         return $view;
     }
     

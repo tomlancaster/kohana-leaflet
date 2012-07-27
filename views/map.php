@@ -1,5 +1,5 @@
 <script src="<?php echo URL::site(Route::get('leaflet_media')->uri(array('file' => 'js/leaflet.js')), TRUE); ?>" type="text/javascript" charset="utf-8"></script>
-<div id="map" style="height:<?php echo $height; ?>px"></div>
+<div id="map" style="height:<?php echo $height; ?>px; width: <?php echo $width ?>px"></div>
 <script type="text/javascript">
     var lat = <?php echo number_format($lat, 8, '.', ''); ?>;
     var lng = <?php echo number_format($lng, 8, '.', ''); ?>;
